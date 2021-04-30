@@ -13,8 +13,6 @@ CREATE TABLE tb_usuario (
 CREATE TABLE tb_categoria (
 	id bigint NOT NULL AUTO_INCREMENT,
 	tipo varchar(255) NOT NULL,
-	classificacao varchar(255) NOT NULL,
-	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -28,6 +26,8 @@ CREATE TABLE tb_produto (
 	municipio_cidade varchar(255) NOT NULL,
 	zona varchar(255) NOT NULL,
 	endereco varchar(255) NOT NULL,
+    classificacao varchar(255) NOT NULL,
+	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id),
     FOREIGN KEY(categoria_id) REFERENCES tb_categoria(id)
 );
