@@ -25,17 +25,6 @@ public class Categoria {
 	@Size(max = 255) // tamanho maximo de caracteres
 	private String tipo;
 	
-	@NotNull
-	@Size(max = 255)
-	private String classificacao;
-	
-	@NotNull
-	private boolean ativo;
-	
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private List<Produto> produto;
-
 	//metodos de acesso gets e sets
 	public long getId() {
 		return id;
@@ -52,22 +41,5 @@ public class Categoria {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
-	public String getClassificacao() {
-		return classificacao;
-	}
-
-	public void setClassificacao(String classificacao) {
-		this.classificacao = classificacao;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-	
 	
 }
