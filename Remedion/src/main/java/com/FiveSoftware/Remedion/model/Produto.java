@@ -37,7 +37,7 @@ public class Produto {
 	
 	@NotNull
 	@Size(max = 255)
-	private String municipio_cidade;
+	private String municipioCidade;
 	
 	@NotNull
 	@Size(max = 255)
@@ -99,12 +99,14 @@ public class Produto {
 		this.posto = posto;
 	}
 
-	public String getMunicipio_cidade() {
-		return municipio_cidade;
+	
+
+	public String getMunicipioCidade() {
+		return municipioCidade;
 	}
 
-	public void setMunicipio_cidade(String municipio_cidade) {
-		this.municipio_cidade = municipio_cidade;
+	public void setMunicipioCidade(String municipioCidade) {
+		this.municipioCidade = municipioCidade;
 	}
 
 	public String getZona() {
@@ -137,6 +139,14 @@ public class Produto {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 }
