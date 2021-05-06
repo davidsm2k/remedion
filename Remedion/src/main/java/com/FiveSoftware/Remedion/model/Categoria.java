@@ -25,6 +25,10 @@ public class Categoria {
 	@Size(max = 255) // tamanho maximo de caracteres
 	private String tipo;
 	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Produto> produto;
+	
 	//metodos de acesso gets e sets
 	public long getId() {
 		return id;
