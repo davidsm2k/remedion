@@ -29,10 +29,6 @@ public class Produto {
 	
 	@NotNull
 	@Size(max = 255)
-	private String descricao;
-	
-	@NotNull
-	@Size(max = 255)
 	private String posto;
 	
 	@NotNull
@@ -81,14 +77,6 @@ public class Produto {
 
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public String getPosto() {
