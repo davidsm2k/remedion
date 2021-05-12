@@ -55,6 +55,21 @@ public class ProdutoController {
 	public ResponseEntity<List <Produto>> findAllByNomeProduto(@PathVariable String nome) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
+	
+	@GetMapping ("/completa/{nome}/{cidade}/{zona}")
+	public ResponseEntity<List <Produto>> findAllByNomeProdutoCidadeZona(@PathVariable String nome, @PathVariable String cidade, @PathVariable String zona) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCaseAndMunicipioCidadeContainingIgnoreCaseAndZonaContainingIgnoreCase(nome,cidade,zona));
+	}
+	
+	@GetMapping ("/posto/{posto}")
+	public ResponseEntity<List <Produto>> findAllByPosto(@PathVariable String posto) {
+		return ResponseEntity.ok(repository.findAllByPostoContainingIgnoreCase(posto));
+	}
+	
+	@GetMapping ("/nomePosto/{nome}/{posto}")
+	public ResponseEntity<List <Produto>> findAllByNomePosto(@PathVariable String nome, @PathVariable String posto) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCaseAndPostoContainingIgnoreCase(nome, posto));
+	}
 		
 	
 }
