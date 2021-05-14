@@ -21,13 +21,14 @@ CREATE TABLE tb_produto (
 	categoria_id bigint NOT NULL,
 	nome varchar(255) NOT NULL,
 	estoque int NOT NULL,
-	descricao varchar(255) NOT NULL,
 	posto varchar(255) NOT NULL,
 	municipio_cidade varchar(255) NOT NULL,
 	zona varchar(255) NOT NULL,
 	endereco varchar(255) NOT NULL,
-    classificacao varchar(255) NOT NULL,
+	classificacao varchar(255) NOT NULL,
 	ativo BOOLEAN NOT NULL,
-	PRIMARY KEY (id),
-    FOREIGN KEY(categoria_id) REFERENCES tb_categoria(id)
+	PRIMARY KEY (id)
 );
+
+ALTER TABLE tb_produto ADD CONSTRAINT tb_produto_fk0 FOREIGN KEY (categoria_id) REFERENCES tb_categoria(id);
+
