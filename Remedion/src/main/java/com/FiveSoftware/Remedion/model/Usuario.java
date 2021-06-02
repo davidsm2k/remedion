@@ -15,8 +15,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	
+		
 	@NotNull
 	@Size(max = 255)
 	private String nomeCompleto;
@@ -28,6 +27,10 @@ public class Usuario {
 	@NotNull
 	@Size(max = 255)
 	private String senha;
+	
+	private String foto;
+	
+	private String tipoUsuario;
 
 	public long getId() {
 		return id;
@@ -61,5 +64,21 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 }
