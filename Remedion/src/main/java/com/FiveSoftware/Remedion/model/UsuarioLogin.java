@@ -1,6 +1,8 @@
 package com.FiveSoftware.Remedion.model;
 
 public class UsuarioLogin {
+	
+	private long id;
 
 	private String nomeCompleto;
 	
@@ -14,6 +16,14 @@ public class UsuarioLogin {
 	
 	private String tipoUsuario;
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -61,6 +71,4 @@ public class UsuarioLogin {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-
-
 }
