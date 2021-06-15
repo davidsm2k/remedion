@@ -7,6 +7,8 @@ CREATE TABLE tb_usuario (
 	nome_completo varchar(255) NOT NULL,
 	email varchar(255) NOT NULL,
 	senha varchar(255) NOT NULL,
+    foto varchar(255),
+    tipo_usuario varchar(255),
 	PRIMARY KEY (id)
 );
 
