@@ -19,42 +19,59 @@ import com.FiveSoftware.Remedion.model.Produto;
 import com.FiveSoftware.Remedion.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping ("/produto")
-@CrossOrigin(origins = "*" , allowedHeaders = "*")
+@RequestMapping("/produto")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProdutoController {
 	@Autowired
 	private ProdutoRepository repository;
 
 	@GetMapping
-	public ResponseEntity <List<Produto>> findAllProduto() 
-	{
+	public ResponseEntity<List<Produto>> findAllProduto() {
 		return ResponseEntity.ok(repository.findAll());
-		}
-	@GetMapping ("/{id}")
-	public ResponseEntity <Produto> findByIdProduto(@PathVariable long id) 
-	{
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Produto> findByIdProduto(@PathVariable long id) {
 		return repository.findById(id).map(Resp -> ResponseEntity.ok(Resp)).orElse(ResponseEntity.notFound().build());
 	}
+
 	@PostMapping
-	public ResponseEntity <Produto> postProduto (@RequestBody Produto produto) 
-	{
+	public ResponseEntity<Produto> postProduto(@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
 	}
+
 	@PutMapping
-	public ResponseEntity <Produto> putProduto (@RequestBody Produto produto) 
-	{
+	public ResponseEntity<Produto> putProduto(@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(produto));
-		
+
 	}
-	@DeleteMapping ("/{id}")
-	public void deleteByIdProduto (@PathVariable long id) 
-	{
+
+	@DeleteMapping("/{id}")
+	public void deleteByIdProduto(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-	@GetMapping ("/nome/{nome}")
-	public ResponseEntity<List <Produto>> findAllByNomeProduto(@PathVariable String nome) {
+
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Produto>> findAllByNomeProduto(@PathVariable String nome) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
-		
-	
+
+	@GetMapping("/completa/{nome}/{cidade}/{zona}")
+	public ResponseEntity<List<Produto>> findAllByNomeProdutoCidadeZona(@PathVariable String nome,
+			@PathVariable String cidade, @PathVariable String zona) {
+		return ResponseEntity.ok(repository
+				.findAllByNomeContainingIgnoreCaseAndMunicipioCidadeContainingIgnoreCaseAndZonaContainingIgnoreCase(
+						nome, cidade, zona));
+	}
+
+	@GetMapping("/posto/{posto}")
+	public ResponseEntity<List<Produto>> findAllByPosto(@PathVariable String posto) {
+		return ResponseEntity.ok(repository.findAllByPostoContainingIgnoreCase(posto));
+	}
+
+	@GetMapping("/nomePosto/{nome}/{posto}")
+	public ResponseEntity<List<Produto>> findAllByNomePosto(@PathVariable String nome, @PathVariable String posto) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCaseAndPostoContainingIgnoreCase(nome, posto));
+	}
+
 }
